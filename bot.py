@@ -32,7 +32,7 @@ for mention in curs.items():
     print incoming_insult
     retort = guybrush.insult(incoming_insult)
     reply = "@{0} {1}".format(user, retort)
-    print reply
+    api.update_status(status=reply, in_reply_to_status_id=mention.id)
 
 #record last id
 with open(since_id_file, 'w+') as f:
