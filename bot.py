@@ -22,7 +22,7 @@ else:
 
 # if there are no new twitter mentions, report this and exit
 mentions = list(curs.items())
-if mentions == 0:
+if len(mentions) == 0:
     print "-----------"
     print "No new twitter mentions"
     print "-----------"
