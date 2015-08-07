@@ -46,8 +46,8 @@ for mention in mentions:
         print mention.id
     print "-----------"
     print mention.id
-    print incoming_insult.decode('utf-8')
-    print reply.decode('utf-8')
+    print incoming_insult
+    print reply#.decode('utf-8')
     print "-----------"
 
 #record last id
