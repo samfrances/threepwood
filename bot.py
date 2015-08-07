@@ -27,30 +27,34 @@ if len(mentions) == 0:
     print "No new twitter mentions"
     print "-----------"
     exit()
+mentions.reverse()
 
 # reply to mentions, and note latest id
-first = True
 for mention in mentions:
-    # get latest since_id
-    if first:
-        since_id = mention.id
-        first = False
+    # record last twitter mention dealt with
+    since_id = mention.id
+    # formulate reply
     user = mention.user.screen_name
     incoming_insult = mention.text
     retort = guybrush.insult(incoming_insult)
     reply = u"@{0} {1}".format(user, retort)
+    # reply to twitter mention
     try:
         api.update_status(status=reply, in_reply_to_status_id=mention.id)
     except tweepy.error.TweepError as e:
         print e
         print mention.id
+        #record last id and exit
+        with open(since_id_file, 'w+') as f:
+            f.write(str(mention.id))
+        exit()
     else:
         print "-----------"
         print mention.id
         print incoming_insult.encode('utf-8', errors="replace")
         print reply.encode('utf-8', errors="replace")
         print "-----------"
-
+    
 #record last id
 with open(since_id_file, 'w+') as f:
     f.write(str(since_id))
