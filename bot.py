@@ -27,7 +27,7 @@ if len(mentions) == 0:
     print "No new twitter mentions"
     print "-----------"
     exit()
-    
+
 # reply to mentions, and note latest id
 first = True
 for mention in mentions:
@@ -44,11 +44,12 @@ for mention in mentions:
     except tweepy.error.TweepError as e:
         print e
         print mention.id
-    print "-----------"
-    print mention.id
-    print incoming_insult.encode('utf-8', errors="replace")
-    print reply.encode('utf-8', errors="replace")
-    print "-----------"
+    else:
+        print "-----------"
+        print mention.id
+        print incoming_insult.encode('utf-8', errors="replace")
+        print reply.encode('utf-8', errors="replace")
+        print "-----------"
 
 #record last id
 with open(since_id_file, 'w+') as f:
