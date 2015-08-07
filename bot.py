@@ -39,7 +39,11 @@ for mention in mentions:
     incoming_insult = mention.text
     retort = guybrush.insult(incoming_insult)
     reply = u"@{0} {1}".format(user, retort)
-    api.update_status(status=reply, in_reply_to_status_id=mention.id)
+    try:
+        api.update_status(status=reply, in_reply_to_status_id=mention.id)
+    except tweepy.error.TweepError as e:
+        print e
+        print mention.id
     print "-----------"
     print mention.id
     print incoming_insult.decode('utf-8')
