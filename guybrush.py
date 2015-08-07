@@ -36,9 +36,13 @@ def insult(insult_text):
     """Respond to a Monkey Island insult"""
     insults = _load_insults()
     insult_text = _sanitise_insult(insult_text)
-    return insults.get(insult_text,
-                       random.choice(("You are rubber, I am glue!",
-                                     "Oh yeah?")))
+    # Check if the text contains an insult, and if so, return appropriate retort
+    for i in insults:
+        if i in insult_text:
+            return insults[i]
+    # If insult is unknown, return a random rubbish insult
+    return random.choice(("You are rubber, I am glue!",
+                          "Oh yeah?"))
 
 def test():
     print "Hello.\n", insult("Hello.")
@@ -46,6 +50,8 @@ def test():
     print "You smell bad.\n", insult("You smell bad.")
     print
     print "I once owned a dog that was smarter than you.\n", insult("I once owned a dog that was smarter than you.")
+    print
+    print "I once owned a dog that was smarter than you.5555\n", insult("I once owned a dog that was smarter than you.")
 
 if __name__ == "__main__":
     test()
