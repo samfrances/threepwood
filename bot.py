@@ -42,8 +42,8 @@ for mention in mentions:
     api.update_status(status=reply, in_reply_to_status_id=mention.id)
     print "-----------"
     print mention.id
-    print incoming_insult
-    print reply
+    print incoming_insult.decode('utf-8')
+    print reply.decode('utf-8')
     print "-----------"
 
 #record last id
