@@ -27,6 +27,8 @@ if len(mentions) == 0:
     print "No new twitter mentions"
     print "-----------"
     exit()
+
+# Reverse mentions list so that oldest is first
 mentions.reverse()
 
 # reply to mentions, and note latest id
