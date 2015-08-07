@@ -29,10 +29,14 @@ for mention in curs.items():
         first = False
     user = mention.user.screen_name
     incoming_insult = mention.text
-    print incoming_insult
     retort = guybrush.insult(incoming_insult)
     reply = "@{0} {1}".format(user, retort)
     api.update_status(status=reply, in_reply_to_status_id=mention.id)
+    print "-----------"
+    print mention.id
+    print incoming_insult
+    print reply
+    print "-----------"
 
 #record last id
 with open(since_id_file, 'w+') as f:
