@@ -21,8 +21,8 @@ else:
     curs = tweepy.Cursor(api.mentions_timeline, since_id=since_id)
 
 # if there are no new twitter mentions, report this and exit
-mentions = curs.items()
-if len(mentions) == 0:
+mentions = list(curs.items())
+if mentions == 0:
     print "-----------"
     print "No new twitter mentions"
     print "-----------"
