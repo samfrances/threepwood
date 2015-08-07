@@ -2,3 +2,4 @@ venv/
 secretconf.py
 *.pyc
 since_id.txt
+*~
