@@ -38,7 +38,7 @@ for mention in mentions:
     user = mention.user.screen_name
     incoming_insult = mention.text
     retort = guybrush.insult(incoming_insult)
-    reply = "@{0} {1}".format(user, retort)
+    reply = u"@{0} {1}".format(user, retort)
     api.update_status(status=reply, in_reply_to_status_id=mention.id)
     print "-----------"
     print mention.id
