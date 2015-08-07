@@ -29,7 +29,7 @@ def _load_insults():
     configpath = os.path.join(this_module_directory, "insults.txt")
     # Load and parse the insults
     with open(configpath, 'r') as f:
-        insults = _parse_insults(f.read())
+        insults = _parse_insults(f.read().decode('utf-8'))
     return insults
 
 def insult(insult_text):
