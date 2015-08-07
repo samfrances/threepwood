@@ -20,9 +20,17 @@ if since_id:
 else:
     curs = tweepy.Cursor(api.mentions_timeline, since_id=since_id)
 
-# reply to mentions, and note latest id]
+# if there are no new twitter mentions, report this and exit
+mentions = curs.items()
+if len(mentions) == 0:
+    print "-----------"
+    print "No new twitter mentions"
+    print "-----------"
+    exit()
+    
+# reply to mentions, and note latest id
 first = True
-for mention in curs.items():
+for mention in mentions:
     # get latest since_id
     if first:
         since_id = mention.id
